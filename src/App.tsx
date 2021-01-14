@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  let b = 'ceva';
+  const ceva = 'ceva';
+  console.log('ceva: ', ceva);
 
   return (
     <div className="App">
