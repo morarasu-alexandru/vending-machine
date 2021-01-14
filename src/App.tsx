@@ -1,11 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import style from './test.module.scss';
 
 function App() {
-  const ceva = 'ceva';
-  console.log('ceva: ', ceva);
-
   return (
     <div className="App">
       <header className="App-header">
@@ -15,6 +13,7 @@ function App() {
           <code>src/App.tsx</code>
           and save to reload.
         </p>
+        <p className={style.someSelector}>Another text</p>
         <a
           className="App-link"
           href="https://reactjs.org"
