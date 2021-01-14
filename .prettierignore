@@ -1,0 +1,7 @@
+node_modules
+build
+coverage
+public
+scripts
+
+src/react-app-env.d.ts
