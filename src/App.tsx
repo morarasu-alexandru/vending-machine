@@ -4,8 +4,8 @@ import './App.css';
 
 function App() {
   const ceva = 'ceva';
+  const b = 'c';
   console.log('ceva: ', ceva);
-
   return (
     <div className="App">
       <header className="App-header">
