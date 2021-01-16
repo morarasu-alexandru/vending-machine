@@ -2,6 +2,7 @@ import React from 'react';
 
 import ProductViewer from './productViewer';
 import CommandPanel from './comandPanel';
+import MoneyInsertionArea from './moneyInsertionArea';
 
 import style from './vendingMachine.module.scss';
 
@@ -14,7 +15,7 @@ const VendingMachine: React.FC = (): JSX.Element => {
           <ProductViewer />
           <div className={style.vendingRightPanel}>
             <CommandPanel />
-            <div className={style.vendingMoneyInput} />
+            <MoneyInsertionArea />
           </div>
         </div>
         <div className={style.vendingFooter}>

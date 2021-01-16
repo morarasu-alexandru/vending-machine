@@ -151,3 +151,22 @@ $sizeRightSide: 35%;
 .vendingCommandMonitor__text {
 
 }
+
+.inputMoneyZone {
+  width: 100%;
+  height: 10rem;
+  padding: 0 1em;
+  box-sizing: border-box;
+  margin-bottom: 2em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.inputMoneyImg {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #6e6e6e;
+  padding:0 1em;
+  box-sizing: border-box;
+}
