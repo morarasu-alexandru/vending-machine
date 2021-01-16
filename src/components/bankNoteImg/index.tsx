@@ -1,5 +1,6 @@
 import React from 'react';
-import { PaperMoney } from '../../store/reducers/userReducer';
+
+import { PaperMoney } from '../../store/interfaces&types';
 import paper1Ron from '../../img/1Ron.jpg';
 import paper5Ron from '../../img/5Ron.jpg';
 import paper10Ron from '../../img/10Ron.jpg';

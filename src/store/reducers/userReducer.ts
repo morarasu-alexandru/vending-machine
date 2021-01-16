@@ -1,34 +1,10 @@
-interface UserState {
-  products: Products;
-  balance: Balance;
-}
-
-interface Products {
-  [productId: string]: Product;
-}
-
-interface Balance {
-  paperMoney: PaperMoney[];
-  coins: {
-    count: number;
-    value: 0.5;
-  };
-}
-
-export type PaperMoney = 1 | 5 | 10;
-
-export interface Product {
-  count: number;
-  name: string;
-  price: number;
-}
+import { UserState } from '../interfaces&types';
 
 const initialState: UserState = {
   products: {},
   balance: {
     coins: {
-      count: 4,
-      value: 0.5
+      count: 4
     },
     paperMoney: [1, 10, 5, 5]
   }
