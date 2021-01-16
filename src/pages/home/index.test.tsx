@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import HomePage from './pages/home';
+import HomePage from './index';
 
 // todo: remove this file and add other mock tests
 

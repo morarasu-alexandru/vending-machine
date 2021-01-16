@@ -2,8 +2,102 @@
   font-size: 1.6rem;
 }
 
+$colorBorder: #282828;
+
+$sizeLeftSide: 65%;
+$sizeRightSide: 35%;
+
+.box {
+  margin: 0 10vw 0 2vw;
+}
 
 .body {
-  width: 40vw;
-  border: 1px solid #29a936;
+  width: 50vw;
+  border: .1rem solid #29a936;
 }
+
+.vendingBody {
+  width: 100%;
+  height: 65rem;
+  display: flex;
+}
+
+.productsViewer {
+  width: $sizeLeftSide;
+  height: 100%;
+  background: rgba(148, 191, 110, .5);
+  border-right: .1rem solid $colorBorder;
+  border-bottom: .1rem solid $colorBorder;
+}
+
+.vendingRightPanel {
+  width: $sizeRightSide;
+  height: 100%;
+  background: rgba(110, 191, 172, .5);
+  border-bottom: .1rem solid $colorBorder;
+}
+
+.vendingCommandPanel {
+
+}
+
+.vendingMoneyInput {
+  height: 50%;
+  background: rgba(150, 178, 178, .5);
+}
+
+.vendingFooter {
+  display: flex;
+  width: 100%;
+  height: 16rem;
+}
+
+.vendingOutputProducts {
+  width: $sizeLeftSide;
+  height: 100%;
+  background: rgba(110, 130, 191, .5);
+}
+
+.vendingMoneyOutput {
+  width: $sizeRightSide;
+  height: 100%;
+  background: rgba(191, 110, 173, .5);
+}
+
+.productsList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 1em;
+}
+
+.productItem {
+  width: 48%;
+  margin: 1em 1%;
+  text-align: center;
+  border: .1rem solid #008000;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 1em;
+}
+
+.productItem--noItem {
+  border-color: #800000;
+}
+
+.productImgContainer {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.productImg {
+  width: 100px;
+  height: 100px;
+}
+
+.codeText {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+

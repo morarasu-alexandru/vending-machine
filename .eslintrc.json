@@ -14,7 +14,8 @@
     "@typescript-eslint/comma-dangle": "off",
     "arrow-body-style": "off",
     "react/no-array-index-key": "warn",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/jsx-one-expression-per-line": "off"
   },
   "parserOptions": {
     "project": "./tsconfig.json",

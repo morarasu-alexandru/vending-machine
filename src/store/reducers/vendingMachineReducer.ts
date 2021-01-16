@@ -1,7 +1,38 @@
 import { VendingMachineState } from '../interfaces&types';
 
 const initialState: VendingMachineState = {
-  products: {},
+  products: {
+    '21': {
+      count: 3,
+      name: 'Bounty',
+      price: 3
+    },
+    '22': {
+      count: 0,
+      name: 'sandwich',
+      price: 5
+    },
+    '23': {
+      count: 2,
+      name: 'twix',
+      price: 2.5
+    },
+    '24': {
+      count: 5,
+      name: 'water',
+      price: 3
+    },
+    '25': {
+      count: 0,
+      name: 'water',
+      price: 3
+    },
+    '26': {
+      count: 4,
+      name: 'Cheetos',
+      price: 4
+    }
+  },
   balance: {
     paperMoney: [],
     coins: {
