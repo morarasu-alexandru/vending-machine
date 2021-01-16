@@ -1,0 +1,1 @@
+export { generateNumberList } from './math';

@@ -24,6 +24,7 @@ const UserPanel: React.FC = () => {
           <ul>
             {paperMoney.map((bankNoteValue, idx) => {
               return (
+                // eslint-disable-next-line react/no-array-index-key
                 <li key={idx} className={style.bankNoteItem}>
                   <BankNoteImg value={bankNoteValue} />
                 </li>
@@ -36,6 +37,7 @@ const UserPanel: React.FC = () => {
           <ul>
             {coins.map((coin: undefined, idx) => {
               return (
+                // eslint-disable-next-line react/no-array-index-key
                 <li className={style.coinItem} key={idx}>
                   <img
                     className={style.coinItem__img}

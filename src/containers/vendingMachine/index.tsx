@@ -1,10 +1,11 @@
 import React from 'react';
 
 import ProductViewer from './productViewer';
+import CommandPanel from './comandPanel';
 
 import style from './vendingMachine.module.scss';
 
-const VendingMachine: React.FC = () => {
+const VendingMachine: React.FC = (): JSX.Element => {
   return (
     <main className={style.box}>
       <h2 className={style.title}>Vending Machine</h2>
@@ -12,7 +13,7 @@ const VendingMachine: React.FC = () => {
         <div className={style.vendingBody}>
           <ProductViewer />
           <div className={style.vendingRightPanel}>
-            <div className={style.vendingCommandPanel} />
+            <CommandPanel />
             <div className={style.vendingMoneyInput} />
           </div>
         </div>

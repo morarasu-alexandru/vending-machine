@@ -20,10 +20,12 @@ const ProductViewer = () => {
     <div className={style.productsViewer}>
       <ul className={style.productsList}>
         {productsListIds.map((id) => {
+          const product = products[id];
+
           return (
             <li
               className={classNames(style.productItem, {
-                [style['productItem--noItem']]: products[id].count === 0
+                [style['productItem--noItem']]: product.count === 0
               })}
               key={id}
             >
@@ -31,12 +33,12 @@ const ProductViewer = () => {
                 <img
                   className={style.productImg}
                   src={noProductImage}
-                  alt={products[id].name}
+                  alt={product.name}
                 />
               </div>
-              <div>name: {products[id].name}</div>
-              <div>price: {products[id].price}</div>
-              <div>count: {products[id].count}</div>
+              <div>name: {product.name}</div>
+              <div>price: {product.price}</div>
+              <div>count: {product.count}</div>
               <div className={style.codeText}>code id: {id}</div>
             </li>
           );

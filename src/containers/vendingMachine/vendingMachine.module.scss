@@ -33,17 +33,17 @@ $sizeRightSide: 35%;
 .vendingRightPanel {
   width: $sizeRightSide;
   height: 100%;
-  background: rgba(110, 191, 172, .5);
   border-bottom: .1rem solid $colorBorder;
 }
 
 .vendingCommandPanel {
-
+  height: 50%;
+  background: rgba(170, 148, 148, .5);
 }
 
 .vendingMoneyInput {
   height: 50%;
-  background: rgba(150, 178, 178, .5);
+  background: rgba(170, 178, 178, .5);
 }
 
 .vendingFooter {
@@ -101,3 +101,53 @@ $sizeRightSide: 35%;
   font-size: 1.4rem;
 }
 
+.vendingPanelList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em 1em;
+}
+
+.vendingPanelList__item {
+  width: 23%;
+  margin: .4em 1%;
+}
+
+.vendingPanel__button {
+  width: 100%;
+  height: 3em;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 100%;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.vendingPanel__buttonText {
+  width: 100%;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.vendingCommandMonitor {
+  margin: 0 1.2em 1em;
+  border: .2rem solid #2d2d2d;
+  text-align: right;
+  background: #42ae23;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0 .5em;
+}
+
+.vendingCommandMonitor__text {
+
+}

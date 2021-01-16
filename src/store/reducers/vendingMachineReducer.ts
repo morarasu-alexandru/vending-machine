@@ -1,4 +1,8 @@
 import { VendingMachineState } from '../interfaces&types';
+import {
+  VendingMachineAction,
+  VendingMachineActionType
+} from '../actions/vendingMachineActionType';
 
 const initialState: VendingMachineState = {
   products: {
@@ -9,22 +13,22 @@ const initialState: VendingMachineState = {
     },
     '22': {
       count: 0,
-      name: 'sandwich',
+      name: 'Sandwich',
       price: 5
     },
     '23': {
       count: 2,
-      name: 'twix',
+      name: 'Twix',
       price: 2.5
     },
     '24': {
-      count: 5,
-      name: 'water',
+      count: 1,
+      name: 'Water',
       price: 3
     },
     '25': {
       count: 0,
-      name: 'water',
+      name: 'Water',
       price: 3
     },
     '26': {
@@ -39,7 +43,7 @@ const initialState: VendingMachineState = {
       count: 10
     }
   },
-  commandPanelInput: '',
+  commandPanelId: '',
   inputBalance: {
     paperMoney: [],
     coins: {
@@ -54,10 +58,29 @@ const initialState: VendingMachineState = {
   }
 };
 
-// @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const vendingMachineReducer = (state = initialState, action): initialState => {
-  return state;
+const vendingMachineReducer = (
+  state = initialState,
+  action: VendingMachineAction
+): VendingMachineState => {
+  switch (action.type) {
+    case VendingMachineActionType.addCodeCharacterToCommandPanel: {
+      const value = action.payload;
+
+      return {
+        ...state,
+        commandPanelId: state.commandPanelId + value
+      };
+    }
+    case VendingMachineActionType.clearCommandPanel: {
+      return {
+        ...state,
+        commandPanelId: initialState.commandPanelId
+      };
+    }
+
+    default:
+      return state;
+  }
 };
 
 export default vendingMachineReducer;
