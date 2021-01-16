@@ -1,20 +1,18 @@
-import { combineReducers, createStore } from 'redux';
+import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import rootReducer from './reducers';
 
 // todo: refactor this at the end of the project if needed
 const configureStore = () => {
-  const store = createStore(
-    combineReducers({
-      counter: () => ({
-        value: 3
-      })
-    }),
-    composeWithDevTools()
-  );
-
-  return store;
+  return createStore(rootReducer, composeWithDevTools());
 };
 
 const store = configureStore();
 
 export default store;
+
+if (process.env.NODE_ENV === 'development') {
+  // @ts-expect-error
+  // eslint-disable-next-line no-console
+  console.log(3 * 'I want this console log in order to check @ts-expect-error');
+}

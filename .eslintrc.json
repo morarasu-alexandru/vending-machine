@@ -11,7 +11,8 @@
     "newline-before-return": "error",
     "comma-dangle": "off",
     "no-var": "off",
-    "@typescript-eslint/comma-dangle": "off"
+    "@typescript-eslint/comma-dangle": "off",
+    "arrow-body-style": "off"
   },
   "parserOptions": {
     "project": "./tsconfig.json",

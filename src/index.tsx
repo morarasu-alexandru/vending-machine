@@ -5,12 +5,13 @@ import { Provider } from 'react-redux';
 // todo: remove reportWebVitals
 import reportWebVitals from './reportWebVitals';
 import store from './store';
+import HomePage from './pages/home';
 
 import './style/index.scss';
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>test</div>
+    <HomePage />
   </Provider>,
   document.getElementById('root')
 );
