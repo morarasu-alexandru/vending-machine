@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+
 import noProductImage from '../../img/noProductImage.png';
 import { Product } from '../../store/interfaces&types';
 import style from './productItem.module.scss';
