@@ -35,7 +35,7 @@ const UserPanel: React.FC<Props> = (props) => {
         {/*  <span>User Balance</span> */}
         {/* </div> */}
         <div>
-          <span>Paper Money</span>
+          <span className="text">Paper Money</span>
           <Droppable droppableId={UiIds.paperMoneyUser}>
             {(provided) => {
               return (
@@ -74,7 +74,7 @@ const UserPanel: React.FC<Props> = (props) => {
           </Droppable>
         </div>
         <div>
-          <span>Coins</span>
+          <span className="text">Coins</span>
           <Droppable droppableId={UiIds.coinsUser}>
             {(provided) => (
               <div
@@ -117,7 +117,7 @@ const UserPanel: React.FC<Props> = (props) => {
           </Droppable>
         </div>
         <div>
-          <span>Products Stash</span>
+          <span className="text">Products Stash</span>
           <Droppable droppableId={UiIds.userStashArea}>
             {(provided) => (
               <div

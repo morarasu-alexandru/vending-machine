@@ -39,9 +39,9 @@ const ProductItem: React.FC<Props> = (props) => {
           alt={product.name}
         />
       </div>
-      <div>name: {product.name}</div>
-      {showPrice && <div>price: {product.price}</div>}
-      <div>count: {product.count}</div>
+      <div className="text">name: {product.name}</div>
+      {showPrice && <div className="text">price: {product.price}</div>}
+      <div className="text">count: {product.count}</div>
       {showCodeId && <div className={style.codeText}>code id: {id}</div>}
     </>
   );

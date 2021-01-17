@@ -19,7 +19,7 @@ const MoneyInsertionArea: React.FC<Props> = (props) => {
   return (
     <div className={style.vendingMoneyInput}>
       <div className={style.inputMoneyZone}>
-        <div>paper money input</div>
+        <div className="text">paper money input</div>
         <Droppable droppableId={UiIds.paperMoneyVendingInput}>
           {(provided) => {
             return (
@@ -42,7 +42,7 @@ const MoneyInsertionArea: React.FC<Props> = (props) => {
         </Droppable>
       </div>
       <div className={style.inputMoneyZone}>
-        <div>coin input</div>
+        <div className="text">coins</div>
         <Droppable droppableId={UiIds.coinsVendingInput}>
           {(provided) => (
             <div
