@@ -2,7 +2,8 @@ import { VendingMachineState } from '../interfaces&types';
 import {
   VendingMachineAction,
   VendingMachineActionType
-} from '../actions/vendingMachineActionType';
+} from '../actions/vendingMachineActions';
+import { coinValue } from '../constants';
 
 const initialState: VendingMachineState = {
   products: {
@@ -44,18 +45,8 @@ const initialState: VendingMachineState = {
     }
   },
   commandPanelId: '',
-  inputBalance: {
-    paperMoney: [],
-    coins: {
-      count: 0
-    }
-  },
-  outputBalance: {
-    paperMoney: [],
-    coins: {
-      count: 0
-    }
-  }
+  inputBalanceValue: 0,
+  outputBalanceValue: 0
 };
 
 const vendingMachineReducer = (
@@ -64,7 +55,7 @@ const vendingMachineReducer = (
 ): VendingMachineState => {
   switch (action.type) {
     case VendingMachineActionType.addCodeCharacterToCommandPanel: {
-      const value = action.payload;
+      const { value } = action.payload;
 
       return {
         ...state,
@@ -75,6 +66,37 @@ const vendingMachineReducer = (
       return {
         ...state,
         commandPanelId: initialState.commandPanelId
+      };
+    }
+    case VendingMachineActionType.depositPaperMoney: {
+      const { value } = action.payload;
+      let newInputBalanceValue = state.inputBalanceValue + value;
+      let newPaperMoney = [...state.balance.paperMoney, value];
+
+      return {
+        ...state,
+        balance: {
+          ...state.balance,
+          paperMoney: newPaperMoney
+        },
+        inputBalanceValue: newInputBalanceValue
+      };
+    }
+
+    case VendingMachineActionType.depositCoin: {
+      const newInputBalanceValue = state.inputBalanceValue + coinValue;
+      const newCoinCount = state.balance.coins.count + 1;
+
+      return {
+        ...state,
+        balance: {
+          ...state.balance,
+          coins: {
+            ...state.balance.coins,
+            count: newCoinCount
+          }
+        },
+        inputBalanceValue: newInputBalanceValue
       };
     }
 

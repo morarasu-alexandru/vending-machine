@@ -1,18 +1,15 @@
 import React from 'react';
-import VendingMachine from '../../containers/vendingMachine';
-import UserPanel from '../../containers/userPanel';
+
+import VendingMachineUserWrapper from '../../containers/vendingMachineUserWrapper';
 
 import style from './home.module.scss';
 
-// todo: remove this file
-
-function HomePage() {
+const HomePage: React.FC = (): JSX.Element => {
   return (
     <div className={style.wrapper}>
-      <VendingMachine />
-      <UserPanel />
+      <VendingMachineUserWrapper />
     </div>
   );
-}
+};
 
 export default HomePage;

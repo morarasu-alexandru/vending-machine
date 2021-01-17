@@ -8,10 +8,14 @@
 .body {
   width: 35vw;
   border: .1rem solid #a92929;
+  display: flex;
 }
 
 .bankNoteItem {
-  max-width: 150px;
+  max-width: 17rem;
+  //display: inline-block;
+  padding: .5em 1em;
+  box-sizing: border-box;
 }
 
 .coinItem {

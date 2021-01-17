@@ -6,7 +6,14 @@ import MoneyInsertionArea from './moneyInsertionArea';
 
 import style from './vendingMachine.module.scss';
 
-const VendingMachine: React.FC = (): JSX.Element => {
+interface Props {
+  isMoneyDragged: boolean;
+  isCoinDraggedToInput: boolean;
+}
+
+const VendingMachine: React.FC<Props> = (props): JSX.Element => {
+  const { isMoneyDragged, isCoinDraggedToInput } = props;
+
   return (
     <main className={style.box}>
       <h2 className={style.title}>Vending Machine</h2>
@@ -15,7 +22,10 @@ const VendingMachine: React.FC = (): JSX.Element => {
           <ProductViewer />
           <div className={style.vendingRightPanel}>
             <CommandPanel />
-            <MoneyInsertionArea />
+            <MoneyInsertionArea
+              isMoneyDragged={isMoneyDragged}
+              isCoinDraggedToInput={isCoinDraggedToInput}
+            />
           </div>
         </div>
         <div className={style.vendingFooter}>

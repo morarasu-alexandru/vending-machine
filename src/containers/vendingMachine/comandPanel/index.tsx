@@ -6,21 +6,21 @@ import PanelListButton from './panelListButton';
 
 import style from '../vendingMachine.module.scss';
 import {
-  addCodeCharacterToCommandPanel,
+  insertCodeCharacterToCommandPanel,
   clearCommandPanel
-} from '../../../store/actions/vendingMachineActionType';
+} from '../../../store/actions/vendingMachineActions';
 import { State } from '../../../store/reducers';
 
 const CommandPanel = () => {
   const vendingMachineState = useSelector(
     (state: State) => state.vendingMachineStore
   );
-  const { commandPanelId } = vendingMachineState;
+  const { commandPanelId, inputBalanceValue } = vendingMachineState;
   const numberList = generateNumberList(1, 9);
   const dispatch = useDispatch();
 
   const addCodeCharacterToCommandPanelAction = (value: string) =>
-    dispatch(addCodeCharacterToCommandPanel(value));
+    dispatch(insertCodeCharacterToCommandPanel(value));
   const clearCommandPanelAction = () => dispatch(clearCommandPanel());
 
   const isNumberButtonDisabled = commandPanelId.length === 2;
@@ -49,12 +49,17 @@ const CommandPanel = () => {
           onClick={clearCommandPanelAction}
           isDisabled={!(commandPanelId.length > 0)}
           value="Clear"
+          isRectangle
         />
-        <PanelListButton isDisabled={commandPanelId.length !== 2} value="Ok" />
+        <PanelListButton
+          isDisabled={commandPanelId.length !== 2}
+          value="Ok"
+          isRectangle
+        />
       </ul>
       <div className={style.vendingCommandMonitor}>
-        <div> : available money</div>
-        <div>{commandPanelId} : product code</div>
+        <div>available money: {inputBalanceValue}</div>
+        <div>product code: {commandPanelId}</div>
       </div>
     </div>
   );
