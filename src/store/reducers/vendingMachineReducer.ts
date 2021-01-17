@@ -46,7 +46,14 @@ const initialState: VendingMachineState = {
   },
   commandPanelId: '',
   inputBalanceValue: 0,
-  outputBalanceValue: 0
+  outputBalanceValue: 0,
+  outputProducts: {
+    '21': {
+      name: 'Bounty',
+      price: 3,
+      count: 1
+    }
+  }
 };
 
 const vendingMachineReducer = (
@@ -111,19 +118,33 @@ const vendingMachineReducer = (
       };
     }
 
-    case VendingMachineActionType.withdrawProduct: {
+    case VendingMachineActionType.transferProductToOutput: {
       const { productCode } = action.payload;
       const product = state.products[productCode];
 
       let newProduct = { ...product };
       newProduct.count -= 1;
 
+      let outputProduct = { ...state.outputProducts[productCode] };
+      outputProduct.name = product.name;
+      outputProduct.price = product.price;
+      let newProductOutput = { ...state.outputProducts };
+
+      if (state.outputProducts[productCode]) {
+        outputProduct.count += 1;
+      } else {
+        outputProduct.count = 1;
+      }
+
+      newProductOutput[productCode] = outputProduct;
+
       return {
         ...state,
         products: {
           ...state.products,
           [productCode]: newProduct
-        }
+        },
+        outputProducts: newProductOutput
       };
     }
 

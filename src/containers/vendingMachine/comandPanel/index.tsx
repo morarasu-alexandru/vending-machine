@@ -8,7 +8,7 @@ import {
   clearCommandPanel,
   insertCodeCharacterToCommandPanel,
   withdrawAvailableMoney,
-  withdrawProduct
+  transferProductToOutput
 } from '../../../store/actions/vendingMachineActions';
 import { State } from '../../../store/reducers';
 import { NotificationContext } from '../../../context/notificationContext';
@@ -29,7 +29,7 @@ const CommandPanel = () => {
   const withdrawAvailableMoneyAction = (value: number) =>
     dispatch(withdrawAvailableMoney(value));
   const withdrawProductAction = (productCode: string) =>
-    dispatch(withdrawProduct(productCode));
+    dispatch(transferProductToOutput(productCode));
 
   const isNumberButtonDisabled = commandPanelId.length === 2;
 

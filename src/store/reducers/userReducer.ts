@@ -2,7 +2,13 @@ import { UserState } from '../interfaces&types';
 import { UserActions, UserActionsTypes } from '../actions/userActions';
 
 const initialState: UserState = {
-  products: {},
+  products: {
+    '22': {
+      count: 1,
+      price: 3,
+      name: 'Sandwich'
+    }
+  },
   balance: {
     coins: {
       count: 4

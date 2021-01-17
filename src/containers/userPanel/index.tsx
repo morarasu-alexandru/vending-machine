@@ -2,17 +2,24 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 
+import classNames from 'classnames';
 import coin05Ron from '../../img/50Bani.png';
 import { State } from '../../store/reducers';
 import BankNoteImg from '../../components/bankNoteImg';
 import { UiIds } from '../../utils/ui';
 
 import style from './userPanel.module.scss';
+import ProductItem from '../../components/productItem';
 
 const UserPanel: React.FC = () => {
   const userState = useSelector((state: State) => state.userStore);
-  const { paperMoney } = userState.balance;
+  const {
+    balance: { paperMoney },
+    products
+  } = userState;
   const coins = [...Array(userState.balance.coins.count)];
+
+  const productsListIds = Object.keys(products);
 
   return (
     <aside>
@@ -84,6 +91,43 @@ const UserPanel: React.FC = () => {
                             </div>
                           )}
                         </Draggable>
+                      </li>
+                    );
+                  })}
+                </ul>
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </div>
+        <div>
+          <span>Products Stash</span>
+          <Droppable droppableId={UiIds.userStashArea}>
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                <ul className={style.productsList}>
+                  {productsListIds.map((id) => {
+                    const product = products[id];
+
+                    return (
+                      <li
+                        className={classNames(
+                          style.productItem,
+                          style['productItem--small'],
+                          style['productItem--noBorder'],
+                          {
+                            [style['productItem--noItem']]: product.count === 0
+                          }
+                        )}
+                        key={id}
+                      >
+                        <ProductItem
+                          product={product}
+                          id={id}
+                          size="small"
+                          showCodeId={false}
+                          showPrice={false}
+                        />
                       </li>
                     );
                   })}

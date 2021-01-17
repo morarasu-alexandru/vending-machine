@@ -8,6 +8,7 @@ export interface VendingMachineState {
   balance: Balance;
   inputBalanceValue: number;
   outputBalanceValue: number;
+  outputProducts: Products;
   commandPanelId: string;
 }
 
