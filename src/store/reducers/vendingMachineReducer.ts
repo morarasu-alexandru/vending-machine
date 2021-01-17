@@ -100,6 +100,33 @@ const vendingMachineReducer = (
       };
     }
 
+    case VendingMachineActionType.withdrawAvailableMoney: {
+      const { value } = action.payload;
+
+      const newInputBalanceValue = state.inputBalanceValue - value;
+
+      return {
+        ...state,
+        inputBalanceValue: newInputBalanceValue
+      };
+    }
+
+    case VendingMachineActionType.withdrawProduct: {
+      const { productCode } = action.payload;
+      const product = state.products[productCode];
+
+      let newProduct = { ...product };
+      newProduct.count -= 1;
+
+      return {
+        ...state,
+        products: {
+          ...state.products,
+          [productCode]: newProduct
+        }
+      };
+    }
+
     default:
       return state;
   }

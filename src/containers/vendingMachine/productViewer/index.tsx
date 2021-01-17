@@ -1,14 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// @ts-expect-error
 import classNames from 'classnames';
 
 import { State } from '../../../store/reducers';
-import noProductImage from '../../../img/noProductImage.png';
 
 import style from '../vendingMachine.module.scss';
+import ProductItem from '../../../components/productItem';
 
-const ProductViewer = () => {
+const ProductViewer: React.FC = (): JSX.Element => {
   const vendingMachineState = useSelector(
     (state: State) => state.vendingMachineStore
   );
@@ -29,17 +28,7 @@ const ProductViewer = () => {
               })}
               key={id}
             >
-              <div className={style.productImgContainer}>
-                <img
-                  className={style.productImg}
-                  src={noProductImage}
-                  alt={product.name}
-                />
-              </div>
-              <div>name: {product.name}</div>
-              <div>price: {product.price}</div>
-              <div>count: {product.count}</div>
-              <div className={style.codeText}>code id: {id}</div>
+              <ProductItem product={product} id={id} />
             </li>
           );
         })}

@@ -7,7 +7,7 @@ const initialState: UserState = {
     coins: {
       count: 4
     },
-    paperMoney: [1, 10, 5, 5]
+    paperMoney: [1, 10, 1, 5, 5]
   }
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
-// @ts-expect-error
 import classNames from 'classnames';
 
 import paperMoneyInputImg from '../../../img/paperMoneyInput.png';

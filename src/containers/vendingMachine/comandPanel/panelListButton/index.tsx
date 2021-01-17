@@ -1,5 +1,4 @@
 import React from 'react';
-// @ts-expect-error
 import classNames from 'classnames';
 
 import style from '../../vendingMachine.module.scss';

@@ -3,6 +3,7 @@ import React from 'react';
 import ProductViewer from './productViewer';
 import CommandPanel from './comandPanel';
 import MoneyInsertionArea from './moneyInsertionArea';
+import ProductsExitArea from './productsExitArea';
 
 import style from './vendingMachine.module.scss';
 
@@ -29,7 +30,7 @@ const VendingMachine: React.FC<Props> = (props): JSX.Element => {
           </div>
         </div>
         <div className={style.vendingFooter}>
-          <div className={style.vendingOutputProducts} />
+          <ProductsExitArea />
           <div className={style.vendingMoneyOutput} />
         </div>
       </div>
