@@ -1,6 +1,9 @@
+import { Product } from '../interfaces&types';
+
 export enum UserActionsTypes {
   withdrawPaperMoneyByIdx = 'USER--WITHDRAW-PAPER-MONEY-BY-IDX',
-  widthdrawCoin = 'USER--WITHDRAW-COIN'
+  withdrawCoin = 'USER--WITHDRAW-COIN',
+  depositProduct = 'USER--DEPOSIT-PRODUCT'
 }
 
 interface WithdrawPaperMoneyByIdx {
@@ -8,8 +11,13 @@ interface WithdrawPaperMoneyByIdx {
   payload: { idx: number };
 }
 
-interface WidthdrawCoin {
-  type: typeof UserActionsTypes.widthdrawCoin;
+interface WithdrawCoin {
+  type: typeof UserActionsTypes.withdrawCoin;
+}
+
+interface DepositProduct {
+  type: typeof UserActionsTypes.depositProduct;
+  payload: { product: Product; productCode: string };
 }
 
 export const withdrawPaperMoneyByIdx = (
@@ -19,8 +27,22 @@ export const withdrawPaperMoneyByIdx = (
   payload: { idx }
 });
 
-export const widthdrawCoin = (): WidthdrawCoin => ({
-  type: UserActionsTypes.widthdrawCoin
+export const withdrawCoin = (): WithdrawCoin => ({
+  type: UserActionsTypes.withdrawCoin
 });
 
-export type UserActions = WithdrawPaperMoneyByIdx | WidthdrawCoin;
+export const depositProduct = (
+  product: Product,
+  productCode: string
+): DepositProduct => ({
+  type: UserActionsTypes.depositProduct,
+  payload: {
+    product,
+    productCode
+  }
+});
+
+export type UserActions =
+  | WithdrawPaperMoneyByIdx
+  | WithdrawCoin
+  | DepositProduct;

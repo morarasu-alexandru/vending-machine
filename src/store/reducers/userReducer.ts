@@ -32,7 +32,7 @@ const userReducer = (state = initialState, action: UserActions): UserState => {
         }
       };
     }
-    case UserActionsTypes.widthdrawCoin: {
+    case UserActionsTypes.withdrawCoin: {
       const newCoinCount = state.balance.coins.count - 1;
 
       return {
@@ -46,6 +46,25 @@ const userReducer = (state = initialState, action: UserActions): UserState => {
         }
       };
     }
+
+    case UserActionsTypes.depositProduct: {
+      const { product, productCode } = action.payload;
+
+      const newProducts = { ...state.products };
+
+      if (state.products[productCode]) {
+        newProducts[productCode].count =
+          state.products[productCode].count + product.count;
+      } else {
+        newProducts[productCode] = product;
+      }
+
+      return {
+        ...state,
+        products: newProducts
+      };
+    }
+
     default:
       return state;
   }

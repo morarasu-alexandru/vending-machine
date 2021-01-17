@@ -147,6 +147,17 @@ const vendingMachineReducer = (
         outputProducts: newProductOutput
       };
     }
+    case VendingMachineActionType.withdrawProductFromOutput: {
+      const { productCode } = action.payload;
+
+      const newOutputProducts = { ...state.outputProducts };
+      delete newOutputProducts[productCode];
+
+      return {
+        ...state,
+        outputProducts: newOutputProducts
+      };
+    }
 
     default:
       return state;

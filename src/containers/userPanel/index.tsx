@@ -29,11 +29,15 @@ const UserPanel: React.FC = () => {
         {/*  <span>User Balance</span> */}
         {/* </div> */}
         <div>
+          <span>Paper Money</span>
           <Droppable droppableId={UiIds.paperMoneyUser}>
             {(provided) => {
               return (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  <span>Paper Money</span>
+                <div
+                  className={style.userStashArea}
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                >
                   <ul>
                     {paperMoney.map((bankNoteValue, idx) => {
                       return (
@@ -67,7 +71,11 @@ const UserPanel: React.FC = () => {
           <span>Coins</span>
           <Droppable droppableId={UiIds.coinsUser}>
             {(provided) => (
-              <div ref={provided.innerRef} {...provided.droppableProps}>
+              <div
+                className={style.userStashArea}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
                 <ul>
                   {coins.map((coin: undefined, idx) => {
                     return (
@@ -104,7 +112,11 @@ const UserPanel: React.FC = () => {
           <span>Products Stash</span>
           <Droppable droppableId={UiIds.userStashArea}>
             {(provided) => (
-              <div ref={provided.innerRef} {...provided.droppableProps}>
+              <div
+                className={style.userStashArea}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
                 <ul className={style.productsList}>
                   {productsListIds.map((id) => {
                     const product = products[id];

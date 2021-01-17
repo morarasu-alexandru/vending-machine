@@ -5,21 +5,27 @@ import VendingMachine from '../vendingMachine';
 import UserPanel from '../userPanel';
 import { UiIds } from '../../utils/ui';
 import {
-  widthdrawCoin,
+  depositProduct,
+  withdrawCoin,
   withdrawPaperMoneyByIdx
 } from '../../store/actions/userActions';
-import { PaperMoney } from '../../store/interfaces&types';
+import { PaperMoney, Product } from '../../store/interfaces&types';
 import {
   depositCoin,
-  depositPaperMoney
+  depositPaperMoney,
+  withdrawProductFromOutput
 } from '../../store/actions/vendingMachineActions';
 import { State } from '../../store/reducers';
 
 const VendingMachineUserWrapper: React.FC = (): JSX.Element => {
+  const vendingMachineState = useSelector(
+    (state: State) => state.vendingMachineStore
+  );
   const userState = useSelector((state: State) => state.userStore);
   const {
     balance: { paperMoney }
   } = userState;
+  const { outputProducts } = vendingMachineState;
   const [isMoneyDragged, setIsMoneyDragged] = useState(false);
   const [isCoinDraggedToInput, setIsCoinDraggedToInput] = useState(false);
 
@@ -29,13 +35,20 @@ const VendingMachineUserWrapper: React.FC = (): JSX.Element => {
     dispatch(withdrawPaperMoneyByIdx(idx));
   const depositPaperMoneyInputAction = (value: PaperMoney) =>
     dispatch(depositPaperMoney(value));
-  const widthdrawCoinAction = () => dispatch(widthdrawCoin());
+  const widthdrawCoinAction = () => dispatch(withdrawCoin());
   const depositCoinAction = () => dispatch(depositCoin());
+  const withdrawProductFromOutputAction = (productCode: string) =>
+    dispatch(withdrawProductFromOutput(productCode));
+  const depositProductAction = (product: Product, productCode: string) =>
+    dispatch(depositProduct(product, productCode));
 
   const onDragEnd = (result: DropResult) => {
+    const sourceId = result.source.droppableId;
+    const destinationId = result.destination?.droppableId;
+
     if (
-      result.source.droppableId === UiIds.paperMoneyUser &&
-      result.destination?.droppableId === UiIds.paperMoneyVendingInput
+      sourceId === UiIds.paperMoneyUser &&
+      destinationId === UiIds.paperMoneyVendingInput
     ) {
       const { index } = result.source;
       depositPaperMoneyInputAction(paperMoney[index]);
@@ -43,11 +56,24 @@ const VendingMachineUserWrapper: React.FC = (): JSX.Element => {
     }
 
     if (
-      result.source.droppableId === UiIds.coinsUser &&
-      result.destination?.droppableId === UiIds.coinsVendingInput
+      sourceId === UiIds.coinsUser &&
+      destinationId === UiIds.coinsVendingInput
     ) {
       depositCoinAction();
       widthdrawCoinAction();
+    }
+
+    if (
+      sourceId === UiIds.vendingOutputArea &&
+      destinationId === UiIds.userStashArea
+    ) {
+      const sourceProductCode = result.source.index.toString();
+
+      withdrawProductFromOutputAction(sourceProductCode);
+      depositProductAction(
+        outputProducts[sourceProductCode],
+        sourceProductCode
+      );
     }
 
     setIsMoneyDragged(false);
