@@ -7,7 +7,9 @@ export enum VendingMachineActionType {
   depositCoin = 'VENDING-MACHINE--DEPOSIT-COIN',
   withdrawAvailableMoney = 'VENDING-MACHINE--WITHDRAW-AVAILABLE-MONEY',
   transferProductToOutput = 'VENDING-MACHINE--TRANSFER-PRODUCT-TO-OUTPUT',
-  withdrawProductFromOutput = 'VENDING-MACHINE--WITHDRAW-PRODUCT-FROM-OUTPUT'
+  withdrawProductFromOutput = 'VENDING-MACHINE--WITHDRAW-PRODUCT-FROM-OUTPUT',
+  transferMoneyToOutput = 'VENDING-MACHINE--TRANSFER-MONEY-TO-OUTPUT',
+  clearMoneyFromOutput = 'VENDING-MACHINE--CLEAR-MONEY-FROM-OUTPUT'
 }
 
 interface AddCodeCharacterToCommandPanel {
@@ -47,6 +49,14 @@ interface WithdrawProductFromOutput {
   payload: {
     productCode: string;
   };
+}
+
+interface TransferMoneyToOutput {
+  type: typeof VendingMachineActionType.transferMoneyToOutput;
+}
+
+interface ClearMoneyFromOutput {
+  type: typeof VendingMachineActionType.clearMoneyFromOutput;
 }
 
 export const insertCodeCharacterToCommandPanel = (
@@ -90,6 +100,14 @@ export const withdrawProductFromOutput = (
   payload: { productCode }
 });
 
+export const transferMoneyToOutput = (): TransferMoneyToOutput => ({
+  type: VendingMachineActionType.transferMoneyToOutput
+});
+
+export const clearMoneyFromOutput = (): ClearMoneyFromOutput => ({
+  type: VendingMachineActionType.clearMoneyFromOutput
+});
+
 export type VendingMachineAction =
   | AddCodeCharacterToCommandPanel
   | ClearCommandPanel
@@ -97,4 +115,6 @@ export type VendingMachineAction =
   | DepositCoin
   | WithdrawAvailableMoney
   | TransferProductToOutput
-  | WithdrawProductFromOutput;
+  | WithdrawProductFromOutput
+  | TransferMoneyToOutput
+  | ClearMoneyFromOutput;

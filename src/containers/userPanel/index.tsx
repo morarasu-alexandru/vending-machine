@@ -11,7 +11,13 @@ import { UiIds } from '../../utils/ui';
 import style from './userPanel.module.scss';
 import ProductItem from '../../components/productItem';
 
-const UserPanel: React.FC = () => {
+interface Props {
+  isCoinDraggedToUser: boolean;
+  isProductDraggedToUser: boolean;
+}
+
+const UserPanel: React.FC<Props> = (props) => {
+  const { isCoinDraggedToUser, isProductDraggedToUser } = props;
   const userState = useSelector((state: State) => state.userStore);
   const {
     balance: { paperMoney },
@@ -72,7 +78,9 @@ const UserPanel: React.FC = () => {
           <Droppable droppableId={UiIds.coinsUser}>
             {(provided) => (
               <div
-                className={style.userStashArea}
+                className={classNames(style.userStashArea, {
+                  [style['userStashArea--gray']]: isCoinDraggedToUser
+                })}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
               >
@@ -113,7 +121,9 @@ const UserPanel: React.FC = () => {
           <Droppable droppableId={UiIds.userStashArea}>
             {(provided) => (
               <div
-                className={style.userStashArea}
+                className={classNames(style.userStashArea, {
+                  [style['userStashArea--gray']]: isProductDraggedToUser
+                })}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
               >

@@ -2,13 +2,7 @@ import { UserState } from '../interfaces&types';
 import { UserActions, UserActionsTypes } from '../actions/userActions';
 
 const initialState: UserState = {
-  products: {
-    '22': {
-      count: 1,
-      price: 3,
-      name: 'Sandwich'
-    }
-  },
+  products: {},
   balance: {
     coins: {
       count: 4
@@ -62,6 +56,21 @@ const userReducer = (state = initialState, action: UserActions): UserState => {
       return {
         ...state,
         products: newProducts
+      };
+    }
+
+    case UserActionsTypes.depositCoinAmount: {
+      const { amount } = action.payload;
+
+      return {
+        ...state,
+        balance: {
+          ...state.balance,
+          coins: {
+            ...state.balance.coins,
+            count: state.balance.coins.count + amount
+          }
+        }
       };
     }
 
