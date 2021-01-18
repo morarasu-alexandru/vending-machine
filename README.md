@@ -16,4 +16,3 @@ open a terminal:
 2. Have a 20% change that a product to become blocked
 3. Shake vending machine feature (in order to unblock products)
 4. Animations in order to imitate reality (using framer motion)
-5. 
